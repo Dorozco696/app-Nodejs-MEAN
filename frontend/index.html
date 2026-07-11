@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="tareaApp">
+<head>
+  <meta charset="utf-8">
+  <title>Tarea2 - Formulario</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body{font-family:Arial;margin:20px}
+    form{margin-bottom:20px}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #ddd;padding:8px}
+  </style>
+</head>
+<body ng-controller="MainCtrl as vm">
+  <h2>Registro de usuarios</h2>
+  <form ng-submit="vm.save()">
+    <label>Nombre: <input type="text" ng-model="vm.user.name" required></label><br><br>
+    <label>Correo: <input type="email" ng-model="vm.user.email" required></label><br><br>
+    <button type="submit">Guardar</button>
+  </form>
+
+  <h3>Registros</h3>
+  <table ng-if="vm.users.length">
+    <thead><tr><th>Nombre</th><th>Correo</th><th>Fecha</th></tr></thead>
+    <tbody>
+      <tr ng-repeat="u in vm.users">
+        <td>{{u.name}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.createdAt | date:'short'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p ng-if="!vm.users.length">No hay registros.</p>
+
+  <script>
+    angular.module('tareaApp', [])
+    .controller('MainCtrl', ['$http', '$window', function($http, $window){
+      const vm = this;
+      vm.user = {};
+      vm.users = [];
+
+      vm.load = function(){
+        $http.get('/api/users').then(res => vm.users = res.data).catch(()=> vm.users = []);
+      };
+
+      vm.save = function(){
+        $http.post('/api/users', vm.user)
+        .then(()=> {
+          $window.location.reload();
+        })
+        .catch(err=> alert('Error al guardar: ' + (err.data && err.data.error ? err.data.error : err.statusText)));
+      };
+
+      vm.load();
+    }]);
+  </script>
+</body>
+</html>
