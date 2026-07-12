@@ -8,22 +8,22 @@ packer {
     }
 }
 
-source "amazon-ebs" "ubuntu_node_nginx" {
+source "amazon-ebs" "ubuntu_node_nginx2" {
     region = "us-east-2"
     source_ami = "ami-0ea1cddefe0c4aed5"
     instance_type = "t3.micro"
     ssh_username = "ubuntu"
-    ami_name = "packer-node-nginx-aws"
-    ami_description = "Ubuntu 24.04 con Node.js y Nginx configurado"
+    ami_name = "packer-node-nginx2-aws"
+    ami_description = "Ubuntu 24.04 con Node.js y Nginx2 configurado"
     associate_public_ip_address = true
     ssh_timeout = "10m"
     tags = {
-        Name = "packer-node-nginx-aws"
+        Name = "packer-node-nginx2-aws"
     }
 }
 
 build {
-    sources = ["source.amazon-ebs.ubuntu_node_nginx"]
+    sources = ["source.amazon-ebs.ubuntu_node_nginx2"]
     
     provisioner "file" {
         source = "backend"

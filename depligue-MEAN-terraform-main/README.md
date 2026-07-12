@@ -25,10 +25,14 @@ subredes públicas y privadas.
 mean-terraform/
 ├── main.tf                  # Módulo raíz: orquesta los módulos
 ├── modules/
-│   └── network/             # VPC, subredes, IGW, NAT, rutas
-│       ├── variables.tf
-│       ├── main.tf
-│       └── outputs.tf
+│   ├── network/             # VPC, subredes, IGW, NAT, rutas
+│   │    ├── variables.tf
+│   │    ├── main.tf
+│   │    └── outputs.tf
+│   ├── security
+│   ├── database
+│   ├── web
+│   └── loadbalancer
 └── README.md
 ```
 
@@ -76,11 +80,11 @@ terraform destroy
 ## Estado del proyecto
 
 - [x] Módulo network (VPC, subredes, IGW, NAT, rutas)
-- [ ] Módulo security (security groups)
-- [ ] Módulo database (MongoDB)
-- [ ] Módulo web (Nginx + Node.js)
-- [ ] Módulo loadbalancer (ALB)
-- [ ] Módulo raíz + output.tf
+- [x] Módulo security (security groups)
+- [x] Módulo database (MongoDB)
+- [x] Módulo web (Nginx + Node.js)
+- [x] Módulo loadbalancer (ALB)
+- [x] Módulo raíz + output.tf
 - [ ] Backend remoto S3 + DynamoDB
 
 ## Equipo
