@@ -7,7 +7,7 @@ variable "project_name" {
 variable "aws_region" {
   description = "Regi�n de AWS"
   type        = string
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "vpc_cidr" {
