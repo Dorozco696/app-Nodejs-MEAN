@@ -9,9 +9,11 @@ resource "aws_instance" "web" {
 
   user_data = <<EOF
 #!/bin/bash
-cat > /etc/profile.d/mongo_host.sh <<EOT
-export MONGODB_HOST="${var.db_private_ip}"
+cat > /var/www/nodeapp/backend/.env <<EOT
+MONGO_URI=mongodb://${var.db_private_ip}:27017/tarea2db
 EOT
+
+systemctl restart nodeapp
 EOF
 
   tags = {

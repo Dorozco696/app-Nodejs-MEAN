@@ -5,7 +5,7 @@
 - Terraform instalado.
 - AWS CLI instalado.
 - Credenciales configuradas en Windows con `aws configure`.
-- Región predeterminada: `us-east-1`.
+- Región predeterminada: `us-east-2`.
 
 ## 2. Módulos implementados
 

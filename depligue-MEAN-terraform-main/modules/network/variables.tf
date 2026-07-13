@@ -24,5 +24,5 @@ variable "private_subnet_cidrs" {
 variable "azs" {
   description = "Zonas de disponibilidad"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["us-east-2a", "us-east-2b"]
 }
