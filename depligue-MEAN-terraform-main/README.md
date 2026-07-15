@@ -45,7 +45,7 @@ aws configure
 
 export AWS_ACCESS_KEY_ID="..."
 export AWS_SECRET_ACCESS_KEY="..."
-export AWS_DEFAULT_REGION="us-east-1"
+export AWS_DEFAULT_REGION="us-east-2"
 ```
 
 ## Uso
@@ -85,11 +85,3 @@ terraform destroy
 - [x] Módulo web (Nginx + Node.js)
 - [x] Módulo loadbalancer (ALB)
 - [x] Módulo raíz + output.tf
-- [ ] Backend remoto S3 + DynamoDB
-
-## Equipo
-
-- Persona A: Red (módulo network)
-- Persona B: Seguridad + Base de datos
-- Persona C: Web + Balanceador
-- Persona D: Integración, outputs y documentación
